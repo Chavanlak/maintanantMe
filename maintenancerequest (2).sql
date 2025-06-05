@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 23, 2025 at 12:57 PM
+-- Generation Time: Jun 05, 2025 at 12:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -111,6 +111,17 @@ CREATE TABLE `user` (
   `Role` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `workdetail`
+--
+
+CREATE TABLE `workdetail` (
+  `workdetailId` int(11) NOT NULL,
+  `statusId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -152,6 +163,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`userId`);
 
 --
+-- Indexes for table `workdetail`
+--
+ALTER TABLE `workdetail`
+  ADD PRIMARY KEY (`workdetailId`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -177,13 +194,19 @@ ALTER TABLE `equipment`
 -- AUTO_INCREMENT for table `repairrequest`
 --
 ALTER TABLE `repairrequest`
-  MODIFY `requestId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `requestId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `workdetail`
+--
+ALTER TABLE `workdetail`
+  MODIFY `workdetailId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

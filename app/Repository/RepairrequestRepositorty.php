@@ -22,6 +22,32 @@ class RepairrequestRepositorty{
     {
        return Repairrequest::where('branch.branchId','=',$branchId);
     }
+    public static function getRepairrequestByBranchId($branchId)
+    {
+        return Repairrequest::where('branchId', $branchId)
+            ->leftJoin('approve', 'approve.approveId', '=', 'repairrequest.approveId')
+            ->leftJoin('equipment', 'equipment.equipmentId', '=', 'repairrequest.equipmentId')
+            ->select('repairrequest.*', 'approve.*', 'equipment.*')
+            ->get();
+    }
+    public static function getStatusRequest($repairrequestId,$status,$branchId,$userId){
+        $Repairrequest = new Repairrequest();
+        $Repairrequest->repairrequestId = $repairrequestId;
+        $Repairrequest->status = $status;
+        $Repairrequest->branchId = $branchId;
+        $Repairrequest->userId = $userId;
+        $Repairrequest->save();
+    }
+    public static function checkstatus(){
+       
+    }
+    public static function getstatusEnum(){
+        $status = new Repairrequest();
+        $status->status = Repairrequest::select('status')->distinct()->get();
+        $status->status = ['ปิดงานเรียบร้อย','กำลังดำเนินการ','รอการอนุมัติ','รอการตรวจสอบ'];
+    
+        return $status->status;
 }
 
+}
 ?>

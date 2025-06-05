@@ -33,7 +33,8 @@ Route::get('/branch', [BranchController::class, 'getallbranches']);
 Route::get('/branch/{id}', [BranchController::class, 'getBranchById']);
 Route::get('/equipment',[RepairrequestController::class, 'getAllequipment']);
 Route::get('request',[RepairrequestController::class, 'getBarnch']);
-
+// Route::get('status',[RepairrequestController::class, 'showallstatus']);
+Route::get('status',[RepairrequestController::class, 'getAllRepairRequests']);
 
 
 
