@@ -50,7 +50,21 @@ class RepairrequestController extends Controller
     public static function getstatus(){
         
     }
+    // public static function getworkdetail(){
+    //     $workdetail = RepairrequestRepositorty::getworkdetailId();
+    //     return view('workdeialId',['workdetail'=>$workdetail]);
+    // }
+    //check
+    public static function getworkdetailch(){
+        $workdetail = RepairrequestRepositorty::getworkdetailIdch();
+        dd($workdetail);
+        return view('workdeialId',['workdetail'=>$workdetail]);
+    }
+      public static function ch(){
+        $wk = RepairrequestRepositorty::getworkdetailId();
+        dd($wk);
+        return view('workdeialId',['workdetail'=>$wk]);
 
-
+      }
     
 }

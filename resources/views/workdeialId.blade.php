@@ -14,24 +14,29 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                {{-- <th scope="col">SerialNumber</th> --}}
-                <th scope="col">Branch code</th>
-                {{-- <th scope="col">status</th> --}}
+
+                <th scope="col">workdetailId</th>
+                <th scope="col">status</th>
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($equipment as $item)
+
+            @foreach ($workDetail as $status)
                 <tr>
-                    <td>{{ $item->serialNumber }}</td>
-                    <td>{{ $item->serialNumber }}</td>
+                    <td>{{ $status->workdetailId }}</td>
+                    <td>{{ $status->statusName }}</td>
                 </tr>
-            @endforeach --}}
-            @foreach ($branchList as $branch)
-                    <td>{{$branch->branchcode}}</td>
-                @endforeach
-            {{-- @foreach ($status as $item)
-                <td>{{ $item->status }}</td>
-            @endforeach --}}
+            @endforeach
+            {{-- @forelse ($workDetail as $status)
+            <tr>
+                <td>{{ $status->workdetailId }}</td>
+                <td>{{ $status->statusName }}</td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="2">No work detail records found.</td>
+            </tr>
+        @endforelse --}}
         </tbody>
 
 

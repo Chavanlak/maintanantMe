@@ -48,6 +48,15 @@ class RepairrequestRepositorty{
     
         return $status->status;
 }
+    public static function getworkdetailId(){
+        return Repairrequest::select('workdetail.workdetailId','workdetail.statusName')->leftJoin('workdetail','workdetail.workdetailId','=','repairrequest.workdetailId')
+            ->get();
+    } 
+    //check 
+    public static function getworkdetailIdch() {
+        return Repairrequest::select('workdetail.workdetailId')->get();
+    }
+    
 
 }
 ?>

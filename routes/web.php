@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\RepairrequestController;
+use App\Http\Controllers\WorkdetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,11 @@ Route::get('/equipment',[RepairrequestController::class, 'getAllequipment']);
 Route::get('request',[RepairrequestController::class, 'getBarnch']);
 // Route::get('status',[RepairrequestController::class, 'showallstatus']);
 Route::get('status',[RepairrequestController::class, 'getAllRepairRequests']);
+Route::get('workdeialId',[RepairrequestController::class, 'getworkdetail']);
 
 
+Route::get('/workdetail', [RepairrequestController::class, 'getworkdetailch'])->name('workdetail.view');
+Route::get('/work',[WorkdetailController::class, 'getallWorkdetail'])->name('workdetail.all');
+Route::get('/wk',[RepairrequestController::class, 'ch'])->name('workdetail.ch');
 
+Route::get('/workId',[WorkdetailController::class, 'getWorkDetailById'])->name('workdetail.id');
