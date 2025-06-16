@@ -1,21 +1,15 @@
 <?php
+
 namespace App\Repository;
-use App\Models\Equipment;
-use App\Models\Repairrequest;
-use App\Models\Approve;
-use App\Models\Branch;
-use App\Models\User;
+use App\Models\Eqipment;
 use Illuminate\Support\Facades\DB;
 
-class EquipmentRepository
-{
-    public static function getIdEquipment($equipmentId)
-    {
-        return Equipment::where('equipmentId', $equipmentId)->first();
+class EquipmentRepository{
+    public static function getAllEquipments(){
+        return Eqipment::all();
     }
-    public static function getAllEquipment()
-    {
-        return Equipment::all();
-    }
+  public static function getEquipmentById($equipmentId){
+        Eqipment::where('eqipment.equipmentId','=',$equipmentId)->first();
+  }
 }
 ?>
