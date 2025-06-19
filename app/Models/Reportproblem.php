@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Branch extends Model
+class Reportproblem extends Model
 {
-    protected $table = 'branch';
-    protected $primaryKey = 'branchId';
+    protected $table ='reportproblem';
+    protected $primaryKey = 'reportProblemId';
     public $timestamps = false;
     use HasFactory;
 }

@@ -11,5 +11,6 @@ class Notirepair extends Model
     
     protected $primaryKey = 'NotirepairId';
     public $timestamps = false;
+    // public $timestamps = true;
     use HasFactory;
 }

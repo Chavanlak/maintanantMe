@@ -11,5 +11,6 @@ class Eqipment extends Model
     protected $table = 'eqipment';
     protected $primaryKey = 'equipmentId';
     public $timestamps = false;
+    // public $timestamps = true;
     use HasFactory;
 }

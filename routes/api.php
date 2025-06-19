@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BranchController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,5 +17,3 @@ use App\Http\Controllers\BranchController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/branches', [BranchController::class, 'getallbranches']);
-Route::post('/branches', [BranchController::class, 'store']);

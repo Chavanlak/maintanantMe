@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\BranchController;
-use App\Http\Controllers\RepairrequestController;
-use App\Http\Controllers\WorkdetailController;
+use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\NotirepairController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ReportproblemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,31 +17,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/testview', action: function () {
-    return view('testview');
-});
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('notirepair');
 // });
-// Route::get('/test',[BranchController::class, 'getallbranches']);
-// Route::group(['prefix'=>'branch'], function () {
-//  Route::apiResource('branch', BranchController::class);
-// });
-// http://localhost:8000/branch/branches
-// Route::group(['prefix'=>'branch'], function () {
-//     Route::apiResource('/branches', BranchController::class);
-// });
-Route::get('/branch', [BranchController::class, 'getallbranches']);
-Route::get('/branch/{id}', [BranchController::class, 'getBranchById']);
-Route::get('/equipment',[RepairrequestController::class, 'getAllequipment']);
-Route::get('request',[RepairrequestController::class, 'getBarnch']);
-// Route::get('status',[RepairrequestController::class, 'showallstatus']);
-Route::get('status',[RepairrequestController::class, 'getAllRepairRequests']);
-Route::get('workdeialId',[RepairrequestController::class, 'getworkdetail']);
+Route::get('/showeqp',[EquipmentController::class,'showallEquipment']);
+// Route::get('/add',[NotirepairController::class,'addEquipment']);
+// Route::get('/showrepair',[NotirepairController::class,'shownotirepair']);
+Route::get('/notirepair', [EquipmentController::class, 'showallEquipment']);
+Route::post('/statuspost',[NotirepairController::class,'addEquipment']);
 
-
-Route::get('/workdetail', [RepairrequestController::class, 'getworkdetailch'])->name('workdetail.view');
-Route::get('/work',[WorkdetailController::class, 'getallWorkdetail'])->name('workdetail.all');
-Route::get('/wk',[RepairrequestController::class, 'ch'])->name('workdetail.ch');
-
-Route::get('/workId',[WorkdetailController::class, 'getWorkDetailById'])->name('workdetail.id');
+//template
+Route::get('/', function () {
+    return view('layout.dashbord');
+});
+Route::get('/s', function () {
+    return view('layout.dashboardme');
+});
+Route::get('/ms',function () {
+    return view('messagetonotirepair');
+});
+Route::get('/table',function () {
+    return view('datatable');
+});
+Route::get('/test',function () {
+    return view('test');
+});
+// Route::get('/message',[MessageController::class,'ShowallMessage']);
+Route::get('/showreportproblem',[ReportproblemController::class,'ShowallReportProblem']);
