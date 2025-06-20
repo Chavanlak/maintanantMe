@@ -21,6 +21,16 @@ class NotirepairRepository{
         $notirepair->save();
 
     }
+    public static function saveNotiRepairWithmessage($messageId,$branchId,$equipmentId,$datesave,$user){
+        $notirepair = new Notirepair();
+        $notirepair->messageId  = $messageId ;
+        $notirepair->branchId = $branchId;
+        $notirepair->equipmentId  = $equipmentId ;
+        // $notirepair->datesave = Carbon::now()->format('Y-m-d H:i:s');
+        $notirepair->datasave = $datesave;
+        $notirepair->user = $user;
+        $notirepair->save();
+    }
     // public static function saveNotiRepair($equipmentId,$user){
     //     // $date = Carbon::parse($date)->format('d-m-Y H:i:s');
     //     // $formattedDate  = Carbon::parse($date)->format('d/m/Y');
@@ -60,7 +70,8 @@ class NotirepairRepository{
         ->orderBy('notirepair.date', 'desc')
         ->get();
         return $notirepair;
-    }
+    } 
+
 
 }
 ?>

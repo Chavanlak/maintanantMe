@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Branch;
 use App\Models\Reportproblem;
+use App\Repository\BranchRepository;
 use App\Repository\EquipmentRepository;
 use App\Repository\NotirepairRepository;
+use Exception;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Carbon;
 use Carbon\Carbon;
@@ -67,8 +69,27 @@ public static function addProblemReport(Request $request){
 public static function getbyIdReportProblem(){
 
 }
-public static function getNotirepairWithbranchId(){
-    $branchList = Branch::all();
+public static function getNotirepairWithbranchId($branchId){
+    $branch = BranchRepository::getBranchId($branchId);
+    $notirepair = NotirepairRepository::getNotirepairWithBrachId($branchId);
+    return view('notirepair', compact('branch', 'notirepair'));
+}
+public static function addNotirepair(Request $request){
+    $messageId = $request->messageId;
+    $branchId = $request->branchId;
+    $equipmentId  = $request->equipmentId ;
+    $datesave = $request->datesave;
+    try{
+        $formatteDate = Carbon::createFromFormat('d/m/Y', $datesave)->format('Y/m/d');
+
+    }
+    catch(\Exception $e){
+        return redirect()->back()->with('error', 'not correct date format');
+    }
+    $datesave = Carbon::now()->format('Y-m-d H:i:s');
+    $user = $request->user;
+    NotirepairRepository::saveNotiRepairWithmessage($messageId,$branchId,$equipmentId,$formatteDate,$user);
+
 }
 
 }

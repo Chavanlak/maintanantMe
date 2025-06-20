@@ -44,3 +44,6 @@ Route::get('/test',function () {
 });
 // Route::get('/message',[MessageController::class,'ShowallMessage']);
 Route::get('/showreportproblem',[ReportproblemController::class,'ShowallReportProblem']);
+
+Route::get('/requestmessage',[]);
+Route::post('/notirepairmessage',[MessageController::class,'addMessage']);

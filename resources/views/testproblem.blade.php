@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="../assets/css/demo.css" />
 </head>
 <body>
+    <form action="/notirepairmessage" method="POST">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -113,6 +114,14 @@
             </div>
         </div>
     </div>
+   
+    </form>
+    @if (session('success'))
+    <div class="alert alert-success mt-3">
+        {{ session('success') }}
+    </div>
+     
+ @endif
 </body>
 <script>
     document.getElementById('smallSelect').addEventListener('change', function(e) {
