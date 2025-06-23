@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($reportProblemList as $m)
+            @foreach($message as $m)
             <tr>
                 <td>{{ $m->reportProblemId }}</td>
                 <td>{{ $m->reportProblemtype }}</td>

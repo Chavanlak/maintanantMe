@@ -38,7 +38,8 @@
     <link rel="stylesheet" href="../assets/css/demo.css" />
 </head>
 <body>
-    <form action="/notirepairmessage" method="POST">
+    <form action="/postmessage" method="POST">
+        @csrf
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -51,9 +52,10 @@
                     </div>
                     <div class="form-group">
                         <label for="smallSelect">เเจ้งปัญหาใหม่</label>
-                        <select
+                        <select name="reportProblemId" 
                           class="form-select form-control-sm"
                           id="smallSelect"
+
                         >
                           {{-- <option>เเจ้งทั่วไป</option>
                           <option>เเจ้งซ่อมอุปกรณ์ไอที</option>
@@ -69,10 +71,11 @@
                       
                         <label for="smallInput">หัวข้อเรื่อง</label>
                         <input type="text" class="form-control form-control-sm" id="smallInput"
-                            {{-- placeholder="หัวข้อเรื่อง" --}} readonly/>
+                            {{-- placeholder="หัวข้อเรื่อง" --}} name="title" readonly/>
                     </div>
-                    <div class="form-group">
-                        <label>สถานะร้านค้า</label><br />
+                    {{-- <form action=""> --}}
+                    {{-- <div class="form-group">
+                        <label>สถานะร้านค้า(สาขา)</label><br />
                         <div class="d-flex">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio"
@@ -89,25 +92,29 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
-    
+                    </div> --}}
+                {{-- </form> --}}
     
     
     
                     <div class="form-group">
                         <label for="comment">รายละเอียดปัญหา</label>
-                        <textarea class="form-control" id="comment" rows="5">
+                        <textarea class="form-control" id="detailcomment" rows="5" name="detailcomment">
           </textarea>
                     </div>
                     <div class="form-group">
+                        <label for="user" class="form-label">ผู้แจ้ง</label>
+                        <input type="text" name="user" class="form-control" required>
+                    </div>
+                    {{-- <div class="form-group">
                         <label class="control-label"> ชื่อผู้เเจ้ง</label>
                         <p class="form-control-static">ชวัลลักษณ์</p>
-                    </div>
+                    </div> --}}
                    
                 </div>
                 <div class="card-action">
-                    <button class="btn btn-success">Submit</button>
-                    <button class="btn btn-danger">Cancel</button>
+                    <button class="btn btn-success">บันทึก</button>
+                    <button class="btn btn-danger">ยกเลิก</button>
                   </div>
     
                 <!-- End Custom template -->
@@ -120,8 +127,9 @@
     <div class="alert alert-success mt-3">
         {{ session('success') }}
     </div>
-     
+    
  @endif
+
 </body>
 <script>
     document.getElementById('smallSelect').addEventListener('change', function(e) {

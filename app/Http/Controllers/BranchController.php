@@ -11,4 +11,14 @@ class BranchController extends Controller
     $branchList = BranchRepository::getAllBranch();
     return view('showallbranch',['branchList' => $branchList]);
   }
+  public static function getBranchbyId($branchId){
+    $branchId = BranchRepository::getBranchId($branchId);
+    if($branchId == null){
+      return redirect()->back()->with('error','ไม่พบสาขา');
+    }
+    else
+    {
+      return view('testproblem',compact('branchId'));
+    }
+  }
 }

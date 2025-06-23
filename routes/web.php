@@ -4,6 +4,8 @@ use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\NotirepairController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReportproblemController;
+use App\Models\Message;
+use App\Models\Notirepair;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,10 +42,11 @@ Route::get('/table',function () {
     return view('datatable');
 });
 Route::get('/test',function () {
-    return view('test');
+    return view('testproblem');
 });
 // Route::get('/message',[MessageController::class,'ShowallMessage']);
-Route::get('/showreportproblem',[ReportproblemController::class,'ShowallReportProblem']);
 
-Route::get('/requestmessage',[]);
-Route::post('/notirepairmessage',[MessageController::class,'addMessage']);
+
+// Route::get('/requestmessage',[MessageController::class,'ShowallMessage']);
+Route::get('/showreportproblem',[ReportproblemController::class,'ShowallReportProblem']);
+Route::post('/postmessage',[NotirepairController::class,'addNotirepair']);

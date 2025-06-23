@@ -162,3 +162,34 @@
 
 </body>
 </html> --}}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Branch Info</title>
+</head>
+<body>
+    <div class="container">
+        <h1>ข้อมูลสาขา (Branch Information)</h1>
+
+        {{-- Show branch data --}}
+        <p><strong>Branch ID:</strong> {{ $branchId }}</p>
+
+        {{-- OR if $branchId is an object or array --}}
+        @if(is_object($branchId) || is_array($branchId))
+            <ul>
+                @foreach($branchId as $key => $value)
+                    <li>{{ $key }}: {{ $value }}</li>
+                @endforeach
+            </ul>
+        @endif
+
+        {{-- Show error message if exists --}}
+        @if(session('error'))
+            <div style="color:red;">
+                {{ session('error') }}
+            </div>
+        @endif
+    </div>
+</body>
+</html>

@@ -74,23 +74,58 @@ public static function getNotirepairWithbranchId($branchId){
     $notirepair = NotirepairRepository::getNotirepairWithBrachId($branchId);
     return view('notirepair', compact('branch', 'notirepair'));
 }
-public static function addNotirepair(Request $request){
+// public static function addNotirepair(Request $request){
+//     $messageId = $request->messageId;
+//     $branchId = $request->branchId;
+//     $equipmentId  = $request->equipmentId ;
+//     $datesave = $request->datesave;
+//     try{
+//         $formatteDate = Carbon::createFromFormat('d/m/Y', $datesave)->format('Y/m/d');
+
+//     }
+//     catch(\Exception $e){
+//         return redirect()->back()->with('error', 'not correct date format');
+//     }
+//     $datesave = Carbon::now()->format('Y-m-d ');
+//     $user = $request->user;
+//     $title = $request->title;
+//     $detailcomment = $request->detailcomment;
+//     NotirepairRepository::saveNotiRepairWithmessage($messageId,$branchId,$equipmentId,$formatteDate,$user,$title,$detailcomment);
+//     return redirect()->back()->with('success', 'บันทึกสำเร็จ');
+
+// }
+public static function addNotirepair(Request $request)
+{
     $messageId = $request->messageId;
     $branchId = $request->branchId;
-    $equipmentId  = $request->equipmentId ;
+    $equipmentId  = $request->equipmentId;
     $datesave = $request->datesave;
-    try{
-        $formatteDate = Carbon::createFromFormat('d/m/Y', $datesave)->format('Y/m/d');
 
+    try {
+        // แปลงวันที่จาก d/m/Y → Y-m-d
+        $formatteDate = Carbon::createFromFormat('d/m/Y', $datesave)->format('Y-m-d');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'รูปแบบวันที่ไม่ถูกต้อง');
     }
-    catch(\Exception $e){
-        return redirect()->back()->with('error', 'not correct date format');
-    }
-    $datesave = Carbon::now()->format('Y-m-d H:i:s');
+
     $user = $request->user;
-    NotirepairRepository::saveNotiRepairWithmessage($messageId,$branchId,$equipmentId,$formatteDate,$user);
+    $title = $request->title;
+    $detailcomment = $request->detailcomment;
 
+    // ใช้ $formatteDate ที่แปลงแล้ว
+    NotirepairRepository::saveNotiRepairWithmessage(
+        $messageId,
+        $branchId,
+        $equipmentId,
+        $formatteDate, 
+        $user,
+        $title,
+        $detailcomment
+    );
+
+    return redirect()->back()->with('success', 'บันทึกสำเร็จ');
 }
+
 
 }
 

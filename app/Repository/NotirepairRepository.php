@@ -21,7 +21,7 @@ class NotirepairRepository{
         $notirepair->save();
 
     }
-    public static function saveNotiRepairWithmessage($messageId,$branchId,$equipmentId,$datesave,$user){
+    public static function saveNotiRepairWithmessage($messageId,$branchId,$equipmentId,$datesave,$user,$title,$detailcomment){
         $notirepair = new Notirepair();
         $notirepair->messageId  = $messageId ;
         $notirepair->branchId = $branchId;
@@ -29,6 +29,8 @@ class NotirepairRepository{
         // $notirepair->datesave = Carbon::now()->format('Y-m-d H:i:s');
         $notirepair->datasave = $datesave;
         $notirepair->user = $user;
+        $notirepair->title = $title;
+        $notirepair->detailcomment = $detailcomment;
         $notirepair->save();
     }
     // public static function saveNotiRepair($equipmentId,$user){
