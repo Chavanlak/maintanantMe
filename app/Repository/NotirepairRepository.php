@@ -21,17 +21,15 @@ class NotirepairRepository{
         $notirepair->save();
 
     }
-    public static function saveNotiRepairWithmessage($messageId,$branchId,$equipmentId,$datesave,$user,$title,$detailcomment){
+    public static function saveNotiRepairWithmessage($messageId ,$branchId,$equipmentId,$user){
         $notirepair = new Notirepair();
-        $notirepair->messageId  = $messageId ;
+        $notirepair->messageId = $messageId;
         $notirepair->branchId = $branchId;
         $notirepair->equipmentId  = $equipmentId ;
         // $notirepair->datesave = Carbon::now()->format('Y-m-d H:i:s');
-        $notirepair->datasave = $datesave;
         $notirepair->user = $user;
-        $notirepair->title = $title;
-        $notirepair->detailcomment = $detailcomment;
-        $notirepair->save();
+        return $notirepair->save();
+
     }
     // public static function saveNotiRepair($equipmentId,$user){
     //     // $date = Carbon::parse($date)->format('d-m-Y H:i:s');
@@ -73,7 +71,15 @@ class NotirepairRepository{
         ->get();
         return $notirepair;
     } 
-
+    public static function getReportNotirepair(){
+    
+    }
+    // $notirepair = Notirepair::join('branch', 'notirepair.branchId', '=', 'branch.branchId')
+    // ->join('eqipment', 'notirepair.equipmentId', '=', 'eqipment.equipmentId')
+    // ->select('notirepair.*', 'branch.branchName', 'eqipment.equipmentName')
+    // ->orderBy('notirepair.date', 'desc')
+    // ->get();
+    // return $notirepair;
 
 }
 ?>

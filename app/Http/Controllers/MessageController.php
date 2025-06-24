@@ -17,4 +17,5 @@ class MessageController extends Controller
        $message = MessageRepository::getAllMesaage();
        return view('showallproblem',['message' => $message]);
     }
+ 
 }

@@ -6,7 +6,9 @@ use App\Models\Branch;
 use App\Models\Reportproblem;
 use App\Repository\BranchRepository;
 use App\Repository\EquipmentRepository;
+use App\Repository\MessageRepository;
 use App\Repository\NotirepairRepository;
+use App\Repository\ReportproblemRepository;
 use Exception;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Carbon;
@@ -96,36 +98,53 @@ public static function getNotirepairWithbranchId($branchId){
 // }
 public static function addNotirepair(Request $request)
 {
-    $messageId = $request->messageId;
+    $messageId = $request->messageId;          
     $branchId = $request->branchId;
-    $equipmentId  = $request->equipmentId;
-    $datesave = $request->datesave;
-
-    try {
-        // แปลงวันที่จาก d/m/Y → Y-m-d
-        $formatteDate = Carbon::createFromFormat('d/m/Y', $datesave)->format('Y-m-d');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'รูปแบบวันที่ไม่ถูกต้อง');
-    }
-
+    $equipmentId = $request->equipmentId;
+    // $datesave = $request->datesave;
     $user = $request->user;
-    $title = $request->title;
-    $detailcomment = $request->detailcomment;
-
-    // ใช้ $formatteDate ที่แปลงแล้ว
-    NotirepairRepository::saveNotiRepairWithmessage(
+    $notirepair= NotirepairRepository::saveNotiRepairWithmessage(
         $messageId,
         $branchId,
         $equipmentId,
-        $formatteDate, 
-        $user,
-        $title,
-        $detailcomment
+        
+        $user
     );
 
-    return redirect()->back()->with('success', 'บันทึกสำเร็จ');
+    // try {
+    //     $formatteDate = Carbon::createFromFormat('d/m/Y', $datesave)->format('Y-m-d');
+    // } catch (\Exception $e) {
+    //     return redirect()->back()->with('error', 'รูปแบบวันที่ไม่ถูกต้อง');
+    // }
+
+ 
+
+    // if(NotirepairRepository::getNotirepairWithMessageId($messageId)->isEmpty()){
+    //     return redirect()->back()->with('error','ไม่พบข้อมูลเเจ้งซ่อม');
+    // }
+    if($notirepair == Null){
+        return redirect()->back()->with('error','not see');
+    }
+    else{
+        return redirect()->back()->with('success', 'บันทึกสำเร็จ');
+    }
+    // NotirepairRepository::saveNotiRepairWithmessage(
+    //     $messageId,
+    //     $branchId,
+    //     $equipmentId,
+    //     $formatteDate,
+    //     $user
+    // );
+
+   
+}
+    public static function getNotirepairWithMessageId($messageId,$reportProblemId){
+        $message = MessageRepository::getMessageId($messageId);
+        // $problemList = ReportproblemRepository::getReportProblemId($reportProblemId);
+        $messageList = MessageRepository::getMessageWithReportProblemId($reportProblemId);
+        return view('testproblem', compact('message', 'messageList'));
+
+    }
 }
 
-
-}
 

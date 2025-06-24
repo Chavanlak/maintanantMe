@@ -52,26 +52,30 @@
                     </div>
                     <div class="form-group">
                         <label for="smallSelect">เเจ้งปัญหาใหม่</label>
-                        <select name="reportProblemId" 
+                        {{-- <select name="reportProblemId" 
                           class="form-select form-control-sm"
                           id="smallSelect"
 
                         >
-                          {{-- <option>เเจ้งทั่วไป</option>
-                          <option>เเจ้งซ่อมอุปกรณ์ไอที</option>
-                          <option>เเจ้งสั่งซื้ออุปกรณ์</option> --}}
+                     
                           @foreach($reportProblemList as $problem)
                           <option value="{{$problem->reportProblemId}}">{{$problem->reportProblemtype}}</option>
                           @endforeach
                         
+                        </select> --}}
+                        <select name="messageId" class="form-select form-control-sm" id="smallSelect">
+                            @foreach($reportProblemList as $problem)
+                                <option value="{{ $problem->messageId }}">{{ $problem->reportProblemtype }}</option>
+                            @endforeach
                         </select>
+                        
                         {{-- <input type="text" id="smallInput" class="form-control form-control-sm"> --}}
                       </div>
                     <div class="form-group">
                       
                         <label for="smallInput">หัวข้อเรื่อง</label>
                         <input type="text" class="form-control form-control-sm" id="smallInput"
-                            {{-- placeholder="หัวข้อเรื่อง" --}} name="title" readonly/>
+                             name="title" readonly/>
                     </div>
                     {{-- <form action=""> --}}
                     {{-- <div class="form-group">
@@ -99,8 +103,7 @@
     
                     <div class="form-group">
                         <label for="comment">รายละเอียดปัญหา</label>
-                        <textarea class="form-control" id="detailcomment" rows="5" name="detailcomment">
-          </textarea>
+                        <textarea class="form-control" id="detailcomment" rows="5" name="detailcomment"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="user" class="form-label">ผู้แจ้ง</label>
@@ -129,14 +132,29 @@
     </div>
     
  @endif
+ @if (session('error'))
+    <div class="alert alert-danger mt-3">
+        {{ session('error') }}
+    </div>
+    
+  @endif
+ 
+ <div></div>
 
 </body>
-<script>
+{{-- <script>
     document.getElementById('smallSelect').addEventListener('change', function(e) {
       // ข้อความที่เลือก
       const selectedText = e.target.options[e.target.selectedIndex].text;
       // อัปเดต input ให้ตรงกัน
       document.getElementById('smallInput').value = selectedText;
     });
-  </script>
+  </script> --}}
+  <script>
+    document.getElementById('smallSelect').addEventListener('change', function(e) {
+        const selectedText = e.target.options[e.target.selectedIndex].text;
+        document.getElementById('smallInput').value = selectedText;
+    });
+</script>
+
   
