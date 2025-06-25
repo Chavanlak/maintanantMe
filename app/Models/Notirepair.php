@@ -11,6 +11,8 @@ class Notirepair extends Model
     
     protected $primaryKey = 'NotirepairId';
     public $timestamps = false;
+    // protected $fillable = ['messageId', 'branchId', 'equipmentId', 'user', 'datesave'];
+
     // public $timestamps = true;
     use HasFactory;
 }

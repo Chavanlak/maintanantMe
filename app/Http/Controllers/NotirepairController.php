@@ -138,6 +138,20 @@ public static function addNotirepair(Request $request)
 
    
 }
+public static function addNotirepairtestNull(Request $request)
+{
+    $messageId = $request->messageId;
+    $user = $request->user;
+
+    $notirepair = NotirepairRepository::saveNotiRepairWithmessage($messageId, $user);
+
+    if ($notirepair == null) {
+        return redirect()->back()->with('error', 'ไม่สามารถบันทึกข้อมูล');
+    } else {
+        return redirect()->back()->with('success', 'บันทึกสำเร็จ');
+    }
+}
+
     public static function getNotirepairWithMessageId($messageId,$reportProblemId){
         $message = MessageRepository::getMessageId($messageId);
         // $problemList = ReportproblemRepository::getReportProblemId($reportProblemId);
@@ -145,6 +159,11 @@ public static function addNotirepair(Request $request)
         return view('testproblem', compact('message', 'messageList'));
 
     }
+    public static function checkreportId($reportProblemId){
+        $messageList = MessageRepository::getMessageWithReportProblemId($reportProblemId);
+        return view('testsave', compact('messageList'));
+    }
+    
 }
 
 

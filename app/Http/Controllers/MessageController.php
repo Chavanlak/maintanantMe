@@ -15,7 +15,32 @@ class MessageController extends Controller
     public static function ShowallMessage()
     {
        $message = MessageRepository::getAllMesaage();
-       return view('showallproblem',['message' => $message]);
+       return view('showtest',['message' => $message]);
     }
- 
+    public static function getAllmessage(){
+        $messageList = MessageRepository::getAllMesaage();
+        return view('showtest', compact('messageList'));
+    }
+    public static function gettitleFromReport(){
+       
+    }
+    public static function addmessage(Request $request){
+        // $reportProblemId = $request->reportProblemId;
+        $title = $request->title;
+        $detailcomment = $request->detailcomment;
+        // $result = MessageRepository::savemessage($reportProblemId, $title, $detailcomment);
+        $result = MessageRepository::savemessage( $title, $detailcomment);
+        $reportProblemId = MessageRepository::getMessageId($title)->first()->reportProblemId;
+        if($result){
+            return redirect()->back()->with('success', 'บันทึกข้อมูลสำเร็จ');
+        } else {
+            return redirect()->back()->with('error', 'ไม่สามารถบันทึกข้อมูลได้');
+        }
+    }
+    public static function show(){
+        return view('showtest');
+    }
+    
 }
+ 
+

@@ -21,16 +21,17 @@ class NotirepairRepository{
         $notirepair->save();
 
     }
-    public static function saveNotiRepairWithmessage($messageId ,$branchId,$equipmentId,$user){
+    public static function saveNotiRepairWithmessage($messageId ,$user){
         $notirepair = new Notirepair();
         $notirepair->messageId = $messageId;
-        $notirepair->branchId = $branchId;
-        $notirepair->equipmentId  = $equipmentId ;
+        
         // $notirepair->datesave = Carbon::now()->format('Y-m-d H:i:s');
         $notirepair->user = $user;
         return $notirepair->save();
 
     }
+
+
     // public static function saveNotiRepair($equipmentId,$user){
     //     // $date = Carbon::parse($date)->format('d-m-Y H:i:s');
     //     // $formattedDate  = Carbon::parse($date)->format('d/m/Y');

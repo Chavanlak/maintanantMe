@@ -51,5 +51,16 @@ Route::get('/test',function () {
 // Route::get('/showreportproblem',[ReportproblemController::class,'ShowallReportProblem']);
 // Route::post('/postmessage',[NotirepairController::class,'addNotirepair']);
 
-Route::get('/getnoti',[NotirepairController::class,'getNotirepairWithMessageId']);
-Route::post('/postmessage',[NotirepairController::class,'addNotirepair']);
+
+// Route::get('/getnoti',[NotirepairController::class,'getNotirepairWithMessageId']);
+Route::get('/getnoti/{messageId}/{reportProblemId}', [NotirepairController::class, 'getNotirepairWithMessageId']);
+Route::post('/postmessage',[NotirepairController::class,'addNotirepairtestNull']);
+
+
+Route::get('/showproblem',[ReportproblemController::class,'getAllRProblem']);
+
+// Route::get('/showproblem',[MessageController::class,'gettitleFromReport']);
+// Route::get('/showmessage',[MessageController::class,'getAllmessage']);
+
+Route::get('/show',[ReportproblemController::class,'getAllRProblem']);
+Route::post('/post', [MessageController::class, 'addmessage']);

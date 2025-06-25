@@ -63,8 +63,13 @@
                           @endforeach
                         
                         </select> --}}
-                        <select name="messageId" class="form-select form-control-sm" id="smallSelect">
+                        {{-- <select name="messageId" class="form-select form-control-sm" id="smallSelect">
                             @foreach($reportProblemList as $problem)
+                                <option value="{{ $problem->messageId }}">{{ $problem->reportProblemtype }}</option>
+                            @endforeach
+                        </select> --}}
+                        <select name="messageId" class="form-select form-control-sm" id="smallSelect">
+                            @foreach($messageList as $problem)
                                 <option value="{{ $problem->messageId }}">{{ $problem->reportProblemtype }}</option>
                             @endforeach
                         </select>
@@ -101,9 +106,13 @@
     
     
     
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="comment">รายละเอียดปัญหา</label>
                         <textarea class="form-control" id="detailcomment" rows="5" name="detailcomment"></textarea>
+                    </div> --}}
+                    <div class="form-group">
+                        <label for="comment">รายละเอียดปัญหา</label>
+                        <textarea class="form-control" rows="5" name="messageId"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="user" class="form-label">ผู้แจ้ง</label>
