@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\maststaffinfoController;
 use App\Http\Controllers\NotirepairController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReportproblemController;
@@ -44,6 +45,7 @@ Route::get('/table',function () {
 Route::get('/test',function () {
     return view('testproblem');
 });
+
 // Route::get('/message',[MessageController::class,'ShowallMessage']);
 
 
@@ -62,5 +64,15 @@ Route::get('/showproblem',[ReportproblemController::class,'getAllRProblem']);
 // Route::get('/showproblem',[MessageController::class,'gettitleFromReport']);
 // Route::get('/showmessage',[MessageController::class,'getAllmessage']);
 
+// Route::get('/show',[ReportproblemController::class,'getAllRProblem']);
+// Route::post('/post', [MessageController::class, 'addmessage']);
+
+Route::get('/home', function () {
+    return view('dashbord.maindashbord');
+});
+
 Route::get('/show',[ReportproblemController::class,'getAllRProblem']);
 Route::post('/post', [MessageController::class, 'addmessage']);
+
+//testuser from fujipos
+Route::get('/showuser',[maststaffinfoController::class,'Showallstaffinfo']);

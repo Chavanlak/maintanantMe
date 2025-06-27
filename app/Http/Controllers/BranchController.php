@@ -20,5 +20,6 @@ class BranchController extends Controller
     {
       return view('testproblem',compact('branchId'));
     }
+  
   }
 }

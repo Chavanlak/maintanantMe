@@ -13,9 +13,13 @@ class ReportproblemController extends Controller
         $reportProblemList  = ReportproblemRepository::getAllReportProblems();
         return view('testproblem',['reportProblemList'=>$reportProblemList]);
     }
+    // public static function getAllRProblem(){
+    //     $problemList = ReportproblemRepository::getAllReportProblems();
+    //     return view ('showtest',compact('problemList'));
+    // }
     public static function getAllRProblem(){
         $problemList = ReportproblemRepository::getAllReportProblems();
-        return view ('showtest',compact('problemList'));
+        return view ('user.userrportrepair',compact('problemList'));
     }
 }
   
