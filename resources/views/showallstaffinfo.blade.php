@@ -11,19 +11,29 @@
     <table border="1">
         <thead>
             <tr>
-                <th>firstname</th>
-                <th>lastname</th>
-                <th>Level</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                {{-- <th>Level</th> --}}
 
             
             </tr>
         </thead>
-        <tbody>
+        {{-- <tbody>
             @foreach ($staffinfo as $staff)
                 <tr>
                     <td>{{ $staff->MStaffInfo_FirstName }}</td>
                     <td>{{ $staff->MStaffInfo_Lastname }}</td>
                     <td>{{ $staff->MStaffInfo_Level }}</td>
+          
+                </tr>
+            @endforeach
+        </tbody> --}}
+        <tbody>
+            @foreach ($userList as $user)
+                <tr>
+                    <td>{{ $user->FirstName}}</td>
+                    <td>{{ $user->LastName}}</td>
+                    {{-- <td>{{ $staff->MStaffInfo_Level }}</td> --}}
           
                 </tr>
             @endforeach

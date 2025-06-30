@@ -7,4 +7,4 @@ class maststaffinfoRepository{
         return maststaffinfo::all();
     }
 }
-?>
+?> 

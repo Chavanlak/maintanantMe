@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\maststaffinfoController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\maststaffinfoitController;
 use App\Http\Controllers\NotirepairController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ReportproblemController;
@@ -75,4 +77,5 @@ Route::get('/show',[ReportproblemController::class,'getAllRProblem']);
 Route::post('/post', [MessageController::class, 'addmessage']);
 
 //testuser from fujipos
-Route::get('/showuser',[maststaffinfoController::class,'Showallstaffinfo']);
+// Route::get('/showuser',[maststaffinfoController::class,'Showallstaffinfo']);
+Route::get('/showitemp',[maststaffinfoitController::class,'showallUser']);

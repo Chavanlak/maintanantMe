@@ -22,4 +22,7 @@ class BranchController extends Controller
     }
   
   }
+  public static function getbranch(){
+    return view("");
+  }
 }
